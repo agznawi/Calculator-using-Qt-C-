@@ -2,7 +2,6 @@
 #define INTERFACE_H
 
 
-#include <QWidget>
 #include <QtWidgets>
 
 class Interface : public QWidget

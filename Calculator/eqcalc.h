@@ -10,12 +10,12 @@ class EqCalc : public QObject
     Q_OBJECT
 
 public:
-    void remSpaces(QString &str);
-    void simplifyPosNegSign(QString &str);
-    double evalExpression(QString str);
     bool detectErrors(QString &str);
+    double evalExpression(QString str);
 
 private:
+    void remSpaces(QString &str);
+    void simplifyPosNegSign(QString &str);
     bool detectAdjacentMultDev(QString str);
     bool detectHangingSignOperator(QString str);
     bool detectEndOperator(QString str);

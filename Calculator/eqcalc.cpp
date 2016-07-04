@@ -105,7 +105,7 @@ QString EqCalc::getSubString(QString &str, int &index)
         }
     }
     emit errorOccurred("Error: Left parentheses mismatch");
-    return subString;
+    return "";
 }
 
 
@@ -174,7 +174,7 @@ double EqCalc::evalExpression(QString str)
     if(str[index] == '*' || str[index] == '/')
     {
         emit errorOccurred("Error: (Sub)expression starts with * or /");
-        return expression;
+        return -1;
     }
 
     expression = getNextTerm(str, index);
@@ -193,10 +193,10 @@ double EqCalc::evalExpression(QString str)
             return expression;
         case ')':
             emit errorOccurred("Error: Right parentheses mismatch");
-            return expression;
+            return -1;
         default:
             emit errorOccurred("Error: Invalid character");
-            return expression;
+            return -1;
         }
     }
 }
@@ -210,22 +210,22 @@ bool EqCalc::detectErrors(QString &equation)
     if(equation == "")
     {
         emit errorOccurred("No equation");
-        return 1;
+        return true;
     }
     if(detectAdjacentMultDev(equation))
     {
         emit errorOccurred("Error: Multiple adjacent * and /");
-        return 1;
+        return true;
     }
     if(detectHangingSignOperator(equation))
     {
         emit errorOccurred("Error: * or / after sign");
-        return 1;
+        return true;
     }
     if(detectEndOperator(equation))
     {
         emit errorOccurred("Error: Excessive op at the end");
-        return 1;
+        return true;
     }
-    return 0;
+    return false;
 }
