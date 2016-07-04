@@ -212,17 +212,17 @@ bool EqCalc::detectErrors(QString &equation)
         emit errorOccurred("No equation");
         return 1;
     }
-    if(ec.detectAdjacentMultDev(equation))
+    if(detectAdjacentMultDev(equation))
     {
         emit errorOccurred("Error: Multiple adjacent * and /");
         return 1;
     }
-    if(ec.detectHangingSignOperator(equation))
+    if(detectHangingSignOperator(equation))
     {
         emit errorOccurred("Error: * or / after sign");
         return 1;
     }
-    if(ec.detectEndOperator(equation))
+    if(detectEndOperator(equation))
     {
         emit errorOccurred("Error: Excessive op at the end");
         return 1;
