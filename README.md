@@ -1,2 +1,2 @@
-# Calculator-using-Qt-C-
-Simple calculator supports + - * / and () operators with Qt
+# Qt-Calculator
+Qt Simple calculator that supports + - * / and () operators
