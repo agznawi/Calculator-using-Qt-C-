@@ -60,10 +60,8 @@ bool EqCalc::detectHangingSignOperator(QString str)
 bool EqCalc::detectEndOperator(QString str)
 {
     char lastC = str[str.length()-1].toLatin1();
-    if(lastC == '+' || lastC == '-' ||
-       lastC == '*' || lastC == '/')
-        return true;
-    return false;
+    return(lastC == '+' || lastC == '-' ||
+       lastC == '*' || lastC == '/');
 }
 
 
